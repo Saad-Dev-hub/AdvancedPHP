@@ -14,8 +14,8 @@ foreach ($images as $image) {
         } elseif (pathinfo($image, PATHINFO_EXTENSION) == 'jpg') {
             if (!is_dir('JPG')) {
                 mkdir('JPG');
-            }
-            $img = imagecreatefromstring(file_get_contents($image));
+            }      
+            $img =imagecreatefromstring(file_get_contents($image));
             $resizedImg = imagescale($img, 300, 300);
             imagejpeg($resizedImg, 'JPG' . DIRECTORY_SEPARATOR . $image);
         } elseif (pathinfo($image, PATHINFO_EXTENSION) == 'gif') {
