@@ -4,7 +4,7 @@ $images = scandir(__DIR__);
 foreach ($images as $image) {
     if (is_file($image) && $image != 'index.php') {
         if (pathinfo($image, PATHINFO_EXTENSION) == 'png') {
-            //Create directory for images if not exists
+            //Create directory for images if  exist
             if (!is_dir('PNG')) {
                 mkdir('PNG');
             }
@@ -14,7 +14,7 @@ foreach ($images as $image) {
         } elseif (pathinfo($image, PATHINFO_EXTENSION) == 'jpg') {
             if (!is_dir('JPG')) {
                 mkdir('JPG');
-            }      
+            }   
             $img =imagecreatefromstring(file_get_contents($image));
             $resizedImg = imagescale($img, 300, 300);
             imagejpeg($resizedImg, 'JPG' . DIRECTORY_SEPARATOR . $image);
